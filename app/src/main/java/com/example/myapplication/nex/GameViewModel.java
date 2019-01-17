@@ -14,7 +14,7 @@ public class GameViewModel extends ViewModel {
     private Game game;
 
     public void init(String player1, String player2) {
-        game = new Game();
+        game = new Game(player1, player2);
         cells = new ObservableArrayMap<>();
     }
 

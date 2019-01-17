@@ -25,6 +25,25 @@ public class Game {
         currPlayer = player1;
     }
 
+    public Game(String name1, String name2){
+        if (!(name1 != null && name1.length()>0 && name2 != null && name2.length()>0)){
+            cells = new Cell[BOARD_SIZE][BOARD_SIZE];
+            player1 = new Player("Player 1", "x");
+            player2 = new Player("Player 2", "o");
+
+            currPlayer = player1;
+        }
+        else{
+            cells = new Cell[BOARD_SIZE][BOARD_SIZE];
+            player1 = new Player(name1, "x");
+            player2 = new Player(name2, "o");
+
+            currPlayer = player1;
+        }
+
+
+    }
+
     public void switchPlayer (){
         currPlayer = currPlayer==player1? player2: player1;
     }

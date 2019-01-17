@@ -41,11 +41,12 @@ public class GameBeginDialog extends DialogFragment {
         final AlertDialog alertDialog = new AlertDialog.Builder(getContext())
                 .setView(rootView)
                 .setTitle("Game")
-                .setCancelable(false)
+                .setCancelable(true)
+                .setNegativeButton("Default", null)
                 .setPositiveButton("Done", null)
                 .create();
         alertDialog.setCanceledOnTouchOutside(false);
-        alertDialog.setCancelable(false);
+        alertDialog.setCancelable(true);
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog) {
@@ -75,6 +76,14 @@ public class GameBeginDialog extends DialogFragment {
                 onDoneClicked();
             }
         });
+
+        Button defaultButon = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+        defaultButon.setOnClickListener(v -> defaultMode());
+    }
+
+    private void defaultMode() {
+        activity.onPlayersSet("", "");
+        dismiss();
     }
 
     private void onDoneClicked() {
